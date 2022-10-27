@@ -438,8 +438,8 @@ def get_html(url):
         html = urllib2.urlopen(request).read()
         return html
     except:
-        print "Error accessing:", url
-        return None        
+        print("Error accessing:", url)
+        return None
 
 def write_html_to_file(html, filename):
     of = open(filename, "w")
@@ -450,15 +450,15 @@ def write_html_to_file(html, filename):
 def test():
     search = Google.search("github")
     if search is None or len(search) == 0: 
-        print "ERROR: No Search Results!"
+        print("ERROR: No Search Results!")
     else: 
-        print "PASSED: {0} Search Results".format(len(search))
+        print("PASSED: {0} Search Results".format(len(search)))
     
     shop = Google.shopping("Disgaea 4")
     if shop is None or len(shop) == 0: 
-        print "ERROR: No Shopping Results!"
+        print("ERROR: No Shopping Results!")
     else: 
-        print "PASSED: {0} Shopping Results".format(len(shop))
+        print("PASSED: {0} Shopping Results".format(len(shop)))
     
     options = ImageOptions()
     options.image_type = ImageType.CLIPART
@@ -466,26 +466,26 @@ def test():
     options.color = "green"
     images = Google.search_images("banana", options)
     if images is None or len(images) == 0: 
-        print "ERROR: No Image Results!"
+        print("ERROR: No Image Results!")
     else:
-        print "PASSED: {0} Image Results".format(len(images))
+        print("PASSED: {0} Image Results".format(len(images)))
         
     calc = Google.calculate("157.3kg in grams")
     if calc is not None and int(calc.value) == 157300:
-        print "PASSED: Calculator passed"
+        print("PASSED: Calculator passed")
     else:
-        print "ERROR: Calculator failed!"
+        print("ERROR: Calculator failed!")
         
     euros = Google.convert_currency(5.0, "USD", "EUR")
     if euros is not None and euros > 0.0:
-        print "PASSED: Currency convert passed"
+        print("PASSED: Currency convert passed")
     else:
-        print "ERROR: Currency convert failed!"
+        print("ERROR: Currency convert failed!")
         
 def main():
     if len(sys.argv) > 1 and sys.argv[1] == "--debug":
         Google.DEBUG_MODE = True
-        print "DEBUG_MODE ENABLED"
+        print("DEBUG_MODE ENABLED")
     test()
         
 if __name__ == "__main__":
